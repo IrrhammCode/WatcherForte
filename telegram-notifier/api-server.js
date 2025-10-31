@@ -232,18 +232,21 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Telegram API Server running on port ${PORT}`);
-  console.log(`📡 Test at: http://localhost:${PORT}/health`);
-  console.log(`\n💡 Endpoints available:`);
-  console.log(`   POST   /api/telegram/test-bot`);
-  console.log(`   POST   /api/telegram/test-message`);
-  console.log(`   POST   /api/telegram/register-watcher`);
-  console.log(`   POST   /api/telegram/watcher/:id/stop`);
-  console.log(`   POST   /api/telegram/watcher/:id/resume`);
-  console.log(`   DELETE /api/telegram/watcher/:id`);
-});
+// Start server (only in development/local mode)
+// In Vercel/serverless, the server is handled by the platform
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Telegram API Server running on port ${PORT}`);
+    console.log(`📡 Test at: http://localhost:${PORT}/health`);
+    console.log(`\n💡 Endpoints available:`);
+    console.log(`   POST   /api/telegram/test-bot`);
+    console.log(`   POST   /api/telegram/test-message`);
+    console.log(`   POST   /api/telegram/register-watcher`);
+    console.log(`   POST   /api/telegram/watcher/:id/stop`);
+    console.log(`   POST   /api/telegram/watcher/:id/resume`);
+    console.log(`   DELETE /api/telegram/watcher/:id`);
+  });
+}
 
 export default app;
 
