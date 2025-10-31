@@ -2,19 +2,13 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "frontend/dist",
-        "installCommand": "npm install",
-        "buildCommand": "cd frontend && npm run build"
-      }
-    },
-    {
       "src": "telegram-notifier/api/index.js",
       "use": "@vercel/node"
     }
   ],
+  "installCommand": "npm install",
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/dist",
   "rewrites": [
     {
       "source": "/api/(.*)",
