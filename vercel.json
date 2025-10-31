@@ -13,17 +13,11 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "telegram-notifier/api/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
   "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "telegram-notifier/api/index.js"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
