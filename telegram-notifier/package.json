@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "echo 'Build complete - Node.js service ready'",
     "start": "node index.js",
     "start:multi": "node api-server.js",
     "test-bot": "node test-bot.js",
