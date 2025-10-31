@@ -5,7 +5,7 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend/dist",
+        "distDir": "dist",
         "installCommand": "npm install",
         "buildCommand": "npm run build --workspace=frontend"
       }
@@ -35,6 +35,7 @@
         }
       ]
     }
-  ]
+  ],
+  "outputDirectory": "frontend/dist"
 }
 
