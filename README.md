@@ -1,6 +1,6 @@
-# 🎯 WatcherForte - NFT Price Monitoring Platform
+# 🎯 WatcherForte - Monitoring Platform
 
-**Automated NFT price monitoring with scheduled transactions on Flow blockchain.**
+**Automated monitoring with scheduled transactions on Flow blockchain.**
 
 > 🚀 **Built for Forte Hacks 2025** - Winner of multiple Flow hackathon challenges  
 > ⚡ Powered by **Forte** - Flow's native automation upgrade with scheduled transactions  
