@@ -24,6 +24,36 @@ const FINDLABS_PASSWORD = import.meta.env.VITE_FINDLABS_PASSWORD || '';
 const JWT_EXPIRY = import.meta.env.VITE_JWT_EXPIRY || '2h';
 const USE_MOCK_DATA = import.meta.env.VITE_USE_MOCK_DATA === 'true' || false;
 
+// Safe btoa polyfill for environments where it might not be available
+const safeBtoa = (str) => {
+  try {
+    if (typeof btoa !== 'undefined') {
+      return btoa(str);
+    }
+    // Fallback for Node.js environments or older browsers
+    if (typeof Buffer !== 'undefined') {
+      return Buffer.from(str, 'binary').toString('base64');
+    }
+    // Manual base64 encoding fallback
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    let result = '';
+    for (let i = 0; i < str.length; i += 3) {
+      const a = str.charCodeAt(i);
+      const b = str.charCodeAt(i + 1) || 0;
+      const c = str.charCodeAt(i + 2) || 0;
+      const bitmap = (a << 16) | (b << 8) | c;
+      result += chars.charAt((bitmap >> 18) & 63);
+      result += chars.charAt((bitmap >> 12) & 63);
+      result += i + 1 < str.length ? chars.charAt((bitmap >> 6) & 63) : '=';
+      result += i + 2 < str.length ? chars.charAt(bitmap & 63) : '=';
+    }
+    return result;
+  } catch (error) {
+    console.error('Error encoding to base64:', error);
+    return '';
+  }
+};
+
 // Cache JWT token to avoid regenerating on every request
 let cachedJWT = null;
 let jwtExpiry = 0;
@@ -46,7 +76,7 @@ const generateJWT = async () => {
 
   try {
     // Generate Basic Auth header
-    const basicAuth = btoa(`${FINDLABS_USERNAME}:${FINDLABS_PASSWORD}`);
+    const basicAuth = safeBtoa(`${FINDLABS_USERNAME}:${FINDLABS_PASSWORD}`);
     
     const response = await fetch(
       `${FIND_LABS_API_BASE}/auth/v1/generate?expiry=${JWT_EXPIRY}`,
@@ -92,7 +122,7 @@ const getAuthHeaders = async (forceBasicAuth = false) => {
   if (forceBasicAuth || !FINDLABS_USERNAME || !FINDLABS_PASSWORD) {
     // Use Basic Auth
     if (FINDLABS_USERNAME && FINDLABS_PASSWORD) {
-      const basicAuth = btoa(`${FINDLABS_USERNAME}:${FINDLABS_PASSWORD}`);
+      const basicAuth = safeBtoa(`${FINDLABS_USERNAME}:${FINDLABS_PASSWORD}`);
       headers['Authorization'] = `Basic ${basicAuth}`;
     }
   } else {
@@ -102,7 +132,7 @@ const getAuthHeaders = async (forceBasicAuth = false) => {
       headers['Authorization'] = `Bearer ${jwt}`;
     } else {
       // Fallback to Basic Auth
-      const basicAuth = btoa(`${FINDLABS_USERNAME}:${FINDLABS_PASSWORD}`);
+      const basicAuth = safeBtoa(`${FINDLABS_USERNAME}:${FINDLABS_PASSWORD}`);
       headers['Authorization'] = `Basic ${basicAuth}`;
     }
   }
