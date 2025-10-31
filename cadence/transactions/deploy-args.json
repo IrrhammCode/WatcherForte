@@ -1,0 +1,10 @@
+{
+  "arguments": [
+    {"type": "String", "value": "ALT-001"},
+    {"type": "UFix64", "value": "155.0"},
+    {"type": "UFix64", "value": "300.0"},
+    {"type": "UFix64", "value": "2.0"},
+    {"type": "UInt64", "value": "1000"}
+  ]
+}
+

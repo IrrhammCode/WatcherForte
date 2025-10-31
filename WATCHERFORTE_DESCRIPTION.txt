@@ -1,0 +1,1 @@
+WatcherForte: Automated NFT/token monitoring on Flow via Forte scheduled transactions. Contracts at 0x0d2b623d26790e50 enable autonomous price tracking and alerts for FROTH, JUICE, NBA Top Shot, NFL ALL DAY, MFL. Built for Forte Hacks 2025 with Find Labs API integration.

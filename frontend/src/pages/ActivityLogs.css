@@ -1,0 +1,430 @@
+/* ====================================
+   Activity Logs - Terminal Style Glass
+   ==================================== */
+
+.activity-logs-page {
+  padding: 0;
+  min-height: 100vh;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ========== Page Header ========== */
+.logs-header {
+  margin-bottom: var(--spacing-2xl);
+  animation: slideInLeft 0.5s ease-out;
+}
+
+.logs-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-sm);
+  background: linear-gradient(135deg, var(--status-success) 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.04em;
+}
+
+.logs-header p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ========== Filter Controls ========== */
+.logs-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-md));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.logs-filters {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.filter-select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 150px;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+
+.logs-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.btn-clear,
+.btn-export {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.btn-clear:hover {
+  background: var(--status-error-glow);
+  border-color: var(--status-error);
+  color: var(--status-error);
+  box-shadow: 0 0 12px var(--status-error-glow);
+}
+
+.btn-export:hover {
+  background: var(--accent-gold-glow);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  box-shadow: 0 0 12px var(--accent-gold-glow);
+}
+
+/* ========== Terminal Container ========== */
+.logs-terminal {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(var(--blur-lg));
+  border: 1px solid var(--glass-border-bright);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 40px rgba(0, 255, 135, 0.1),
+    inset 0 0 60px rgba(0, 255, 135, 0.05);
+  overflow: hidden;
+  animation: scaleIn 0.6s ease-out;
+  position: relative;
+}
+
+/* Terminal Header (like macOS/Linux terminal) */
+.terminal-header {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--glass-border);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.terminal-dot.red { background: #FF5F56; }
+.terminal-dot.yellow { background: #FFBD2E; }
+.terminal-dot.green { background: #27C93F; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.8rem;
+  color: var(--status-success);
+}
+
+.status-dot-live {
+  width: 8px;
+  height: 8px;
+  background: var(--status-success);
+  border-radius: 50%;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Terminal Body */
+.terminal-body {
+  padding: var(--spacing-xl);
+  max-height: 600px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Scrollbar for Terminal */
+.terminal-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: var(--status-success);
+  border-radius: 5px;
+  box-shadow: 0 0 8px var(--status-success-glow);
+}
+
+/* ========== Log Entry Styles ========== */
+.log-entry {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  transition: all var(--transition-fast);
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.log-entry:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-sm);
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-timestamp {
+  color: var(--text-dim);
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.log-level {
+  flex-shrink: 0;
+  min-width: 80px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.log-level.info { color: var(--accent-cyan); }
+.log-level.success { color: var(--status-success); }
+.log-level.warning { color: var(--status-warning); }
+.log-level.error { color: var(--status-error); }
+
+.log-watcher {
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  min-width: 100px;
+  font-weight: 600;
+}
+
+.log-message {
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.log-details {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Log Type Icons */
+.log-icon {
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+/* ========== Empty State ========== */
+.logs-empty {
+  text-align: center;
+  padding: var(--spacing-3xl);
+}
+
+.logs-empty-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.3;
+}
+
+.logs-empty-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-sm);
+}
+
+.logs-empty-desc {
+  font-size: 1rem;
+  color: var(--text-dim);
+}
+
+/* ========== Stats Summary (Above Terminal) ========== */
+.logs-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.log-stat-card {
+  padding: var(--spacing-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-sm));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.log-stat-card:hover {
+  border-color: var(--glass-border-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px var(--accent-cyan-glow);
+}
+
+.log-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1;
+}
+
+.log-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* ========== Real-time Indicator ========== */
+.realtime-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 4px 12px;
+  background: var(--status-success-glow);
+  border: 1px solid var(--status-success);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--status-success);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ========== Syntax Highlighting (Terminal) ========== */
+.log-message .keyword {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.log-message .number {
+  color: var(--accent-gold);
+}
+
+.log-message .string {
+  color: var(--status-success);
+}
+
+.log-message .error-text {
+  color: var(--status-error);
+  font-weight: 600;
+}
+
+/* ========== Loading State ========== */
+.logs-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.loading-spinner {
+  border: 4px solid var(--glass-border);
+  border-top-color: var(--status-success);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .logs-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .logs-filters {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .logs-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .logs-header h1 {
+    font-size: 2rem;
+  }
+  
+  .terminal-body {
+    font-size: 0.8rem;
+    padding: var(--spacing-md);
+  }
+  
+  .log-entry {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .log-timestamp,
+  .log-level,
+  .log-watcher {
+    min-width: auto;
+  }
+  
+  .logs-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

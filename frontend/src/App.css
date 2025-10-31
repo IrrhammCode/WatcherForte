@@ -1,0 +1,90 @@
+/* ====================================
+   App Component - Glassmorphism Layout
+   ==================================== */
+
+.App {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Content Area (Right of Sidebar) */
+.app-content-with-sidebar {
+  flex: 1;
+  margin-left: 280px; /* Match expanded sidebar width */
+  min-height: 100vh;
+  padding: var(--spacing-2xl);
+  transition: margin-left var(--transition-base);
+  overflow-y: auto;
+  position: relative;
+}
+
+/* When sidebar is collapsed */
+.sidebar-nav.collapsed ~ .app-content-with-sidebar {
+  margin-left: 80px; /* Match collapsed sidebar width */
+}
+
+/* Glassmorphism overlay for content area */
+.app-content-with-sidebar::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 280px;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 240, 255, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+  transition: left var(--transition-base);
+}
+
+.sidebar-nav.collapsed ~ .app-content-with-sidebar::before {
+  left: 80px;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: border-color, background-color, color, transform, opacity, box-shadow;
+  transition-duration: var(--transition-base);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Disable transitions during resize */
+.resizing * {
+  transition: none !important;
+}
+
+/* ========== Page Container (Inside Content Area) ========== */
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .app-content-with-sidebar {
+    padding: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content-with-sidebar {
+    margin-left: 0;
+    padding: var(--spacing-lg);
+  }
+  
+  .app-content-with-sidebar::before {
+    left: 0;
+  }
+  
+  .sidebar-nav.collapsed ~ .app-content-with-sidebar {
+    margin-left: 0;
+  }
+}
