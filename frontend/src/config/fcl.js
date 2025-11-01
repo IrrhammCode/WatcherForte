@@ -48,27 +48,48 @@ const WALLETCONNECT_CONFIG = {
 const networkConfig = NETWORK === "testnet" ? TESTNET_CONFIG : EMULATOR_CONFIG;
 
 // Initialize FCL with error handling
+// Only initialize in browser environment
 if (typeof window !== 'undefined') {
   try {
     // Safely apply FCL config
     if (config && typeof config === 'function') {
+      // Ensure all required config properties are defined
       const configObject = {
         ...networkConfig,
       };
-      
-      // Only add WalletConnect config if available (may not be needed)
-      // Commented out to avoid potential undefined errors
-      // ...WALLETCONNECT_CONFIG,
-      
+
+      // Validate required config properties before applying
+      if (!configObject['accessNode.api']) {
+        console.error('❌ FCL config missing accessNode.api');
+      }
+      if (!configObject['discovery.wallet']) {
+        console.error('❌ FCL config missing discovery.wallet');
+      }
+
+      // Apply config
       config(configObject);
-      console.log('✅ FCL configured successfully');
+      
+      // Verify config was applied by checking if config function still exists
+      if (config) {
+        console.log('✅ FCL configured successfully');
+      } else {
+        console.warn('⚠️ FCL config may not be fully initialized');
+      }
     } else {
       console.warn('⚠️ FCL config function not available');
     }
   } catch (error) {
     console.error('❌ Error configuring FCL:', error);
+    console.error('❌ Error details:', {
+      message: error.message,
+      stack: error.stack,
+      config: networkConfig
+    });
     // Continue execution even if FCL config fails
   }
+} else {
+  // Server-side rendering or build time - skip FCL initialization
+  console.log('⚠️ Skipping FCL initialization (not in browser environment)');
 }
 
 // Export network for components to use

@@ -17,20 +17,38 @@ function App() {
 
   useEffect(() => {
     // Subscribe to FCL user changes with error handling
-    try {
-      if (fcl && fcl.currentUser && typeof fcl.currentUser.subscribe === 'function') {
-        const unsubscribe = fcl.currentUser.subscribe(setUser);
-        return () => {
-          if (unsubscribe && typeof unsubscribe === 'function') {
-            unsubscribe();
-          }
-        };
-      } else {
-        console.warn('FCL currentUser not available');
+    // Wait a bit for FCL to be fully initialized
+    let unsubscribe = null;
+
+    const initFCL = async () => {
+      try {
+        // Check if FCL is available and properly initialized
+        if (!fcl) {
+          console.warn('FCL is not available');
+          return;
+        }
+
+        // Wait a small delay to ensure FCL config is fully applied
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        if (fcl.currentUser && typeof fcl.currentUser.subscribe === 'function') {
+          unsubscribe = fcl.currentUser.subscribe(setUser);
+        } else {
+          console.warn('FCL currentUser not available or not initialized');
+        }
+      } catch (error) {
+        console.error('Error subscribing to FCL user:', error);
       }
-    } catch (error) {
-      console.error('Error subscribing to FCL user:', error);
-    }
+    };
+
+    initFCL();
+
+    return () => {
+      // Cleanup subscription
+      if (unsubscribe && typeof unsubscribe === 'function') {
+        unsubscribe();
+      }
+    };
   }, []);
 
   const handleNavigate = (pageId) => {
