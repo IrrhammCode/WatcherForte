@@ -1789,7 +1789,8 @@ access(all) fun main(watcherID: UInt64): FullWatcherData {
 
 let lastCheckedBlock = 0;
 
-async function monitorBlockchain() {
+// Export function untuk dipanggil dari external cron service (jika diperlukan)
+export async function monitorBlockchain() {
   try {
     const latestBlock = await fcl.block({ sealed: true });
     
@@ -2576,7 +2577,10 @@ async function monitorBlockchain() {
 }
 
 // Start monitoring
+// Monitoring akan jalan terus dengan setInterval
+// Untuk deployment ke Railway/Render/Fly.io atau local dengan PM2
 setInterval(monitorBlockchain, CHECK_INTERVAL * 1000);
+console.log(`🔄 Started monitoring interval: every ${CHECK_INTERVAL} seconds`);
 
 /**
  * ======================

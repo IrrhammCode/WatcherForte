@@ -1,0 +1,25 @@
+[build]
+  # Install dependencies dan build frontend
+  command = "npm install && npm --workspace frontend run build"
+  # Directory hasil build yang akan di-deploy
+  publish = "frontend/dist"
+  # Base directory (root project)
+  base = "."
+
+[build.environment]
+  # Node version
+  NODE_VERSION = "18"
+
+# Redirect rules untuk SPA (React Router)
+# Semua route diarahkan ke index.html untuk client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Note untuk Telegram API:
+# Telegram-notifier menggunakan Express yang perlu setup khusus di Netlify
+# 
+# Opsi 1: Deploy telegram-notifier terpisah di Railway/Render/Fly.io
+# Opsi 2: Convert ke Netlify Functions (perlu refactor Express app)
+# Opsi 3: Gunakan Vercel untuk backend (sudah ada vercel.json)

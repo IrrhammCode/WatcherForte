@@ -1,19 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "telegram-notifier/api/index.js",
-      "use": "@vercel/node"
-    }
-  ],
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "telegram-notifier/api/index.js"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
