@@ -22,12 +22,8 @@ export default defineConfig({
       include: [/node_modules/],
       transformMixedEsModules: true,
     },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: false,
-      },
-    },
+    // Use default esbuild minifier (faster and included)
+    // minify: 'terser', // Requires terser package
   },
   optimizeDeps: {
     include: ['@onflow/fcl', '@onflow/types'],
