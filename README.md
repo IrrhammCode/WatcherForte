@@ -4,6 +4,7 @@
 > 🚀 **Forte Hacks 2025 Submission** - Autonomous NFT/Token price monitoring with on-chain automation  
 > ⚡ **Powered by Forte** - Flow's network upgrade enabling native scheduled transactions  
 > 🔗 **Deployed on Flow Testnet** - Production-ready smart contracts  
+> 🐦 Using Find Labs API
 > 📺 **Video Demo:** [Watch on X/Twitter](https://x.com/BabyBoomWeb3/status/1984466868749681004)  
 > 🐦 **Social Media:** [View Post](https://x.com/BabyBoomWeb3/status/1984466868749681004) - Tags @flow_blockchain #ForteHacks
 
