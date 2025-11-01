@@ -37,6 +37,7 @@ const TESTNET_CONFIG = {
 // ========================================
 // Register at: https://cloud.walletconnect.com/
 // This is a demo projectId - replace with your own for production
+// Only include if WalletConnect is needed and available
 const WALLETCONNECT_CONFIG = {
   "walletconnect.projectId": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6",
 };
@@ -46,10 +47,29 @@ const WALLETCONNECT_CONFIG = {
 // ========================================
 const networkConfig = NETWORK === "testnet" ? TESTNET_CONFIG : EMULATOR_CONFIG;
 
-config({
-  ...networkConfig,
-  ...WALLETCONNECT_CONFIG,
-});
+// Initialize FCL with error handling
+if (typeof window !== 'undefined') {
+  try {
+    // Safely apply FCL config
+    if (config && typeof config === 'function') {
+      const configObject = {
+        ...networkConfig,
+      };
+      
+      // Only add WalletConnect config if available (may not be needed)
+      // Commented out to avoid potential undefined errors
+      // ...WALLETCONNECT_CONFIG,
+      
+      config(configObject);
+      console.log('✅ FCL configured successfully');
+    } else {
+      console.warn('⚠️ FCL config function not available');
+    }
+  } catch (error) {
+    console.error('❌ Error configuring FCL:', error);
+    // Continue execution even if FCL config fails
+  }
+}
 
 // Export network for components to use
 export { NETWORK };
