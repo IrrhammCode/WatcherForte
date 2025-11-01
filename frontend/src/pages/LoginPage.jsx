@@ -113,13 +113,8 @@ const LoginPage = ({ onConnect }) => {
         <div className="login-footer">
           <div className="footer-divider"></div>
           <p className="footer-text">
-            Powered by <span className="highlight">Flow Blockchain</span> & <span className="highlight">FCL</span>
+            Powered by <span className="highlight">Find Labs</span>
           </p>
-          <div className="footer-badges">
-            <span className="badge">Scheduled Transactions</span>
-            <span className="badge">FLIP 330</span>
-            <span className="badge">Flow Emulator</span>
-          </div>
         </div>
       </div>
 
