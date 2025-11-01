@@ -2,7 +2,7 @@
 
 ## Setup Environment Variables
 
-Gunakan file `.env` untuk mengatur environment variables di development lokal.
+Use `.env` files to configure environment variables for local development.
 
 ## Frontend Environment Variables
 
@@ -31,7 +31,7 @@ VITE_USE_MOCK_DATA=false
    cp .env.example .env
    ```
 
-2. Edit `.env` file dan isi dengan credentials Anda:
+2. Edit `.env` file and fill in your credentials:
    ```bash
    VITE_FINDLABS_USERNAME=your_actual_username
    VITE_FINDLABS_PASSWORD=your_actual_password
@@ -70,21 +70,21 @@ FLOW_NETWORK=testnet
    cp .env.example .env
    ```
 
-2. Edit `.env` file dan isi dengan credentials Anda
+2. Edit `.env` file and fill in your credentials
 
 3. Restart service:
    ```bash
    npm start
-   # atau dengan PM2:
+   # or with PM2:
    npm run pm2:restart
    ```
 
 ## Deployment to Netlify (Frontend)
 
-Untuk deployment ke Netlify, tambahkan environment variables di Netlify Dashboard:
+For deployment to Netlify, add environment variables in Netlify Dashboard:
 
 1. Go to **Site settings** > **Environment variables**
-2. Add each variable (semua harus diawali `VITE_`):
+2. Add each variable (all must be prefixed with `VITE_`):
    - `VITE_FINDLABS_USERNAME`
    - `VITE_FINDLABS_PASSWORD`
    - `VITE_JWT_EXPIRY` (optional)
@@ -94,10 +94,10 @@ Untuk deployment ke Netlify, tambahkan environment variables di Netlify Dashboar
 
 ## Deployment to Railway/Render/Fly.io (Telegram Notifier)
 
-Untuk deployment ke Railway/Render/Fly.io, tambahkan environment variables di platform dashboard:
+For deployment to Railway/Render/Fly.io, add environment variables in platform dashboard:
 
 1. Go to your project settings
-2. Find **Environment Variables** atau **Config Vars** section
+2. Find **Environment Variables** or **Config Vars** section
 3. Add each variable:
    - `FINDLABS_USERNAME`
    - `FINDLABS_PASSWORD`
@@ -108,9 +108,9 @@ Untuk deployment ke Railway/Render/Fly.io, tambahkan environment variables di pl
 
 ## Important Notes
 
-- **Frontend**: Variables harus diawali `VITE_` untuk di-expose ke browser
-- **Telegram Notifier**: Variables tidak perlu `VITE_` prefix
-- Jangan commit file `.env` ke git (sudah ada di `.gitignore`)
-- Selalu gunakan `.env.example` sebagai template
-- Setelah mengubah `.env`, restart service/development server
+- **Frontend**: Variables must be prefixed with `VITE_` to be exposed to the browser
+- **Telegram Notifier**: Variables do not need `VITE_` prefix
+- Do not commit `.env` files to git (already in `.gitignore`)
+- Always use `.env.example` as a template
+- After changing `.env`, restart the service/development server
 
