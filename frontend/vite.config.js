@@ -9,5 +9,15 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'fcl': ['@onflow/fcl'],
+        },
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ['@onflow/fcl'],
   },
 })
