@@ -62,6 +62,11 @@ access(all) fun main(watcherID: UInt64): FullWatcherData {
 }
     `;
 
+    // Ensure FCL is ready
+    if (!fcl || !fcl.query) {
+      throw new Error('FCL query is not available. Please refresh the page.');
+    }
+
     // Add timeout promise (3 seconds)
     const timeoutPromise = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('Query timeout after 3 seconds')), 3000)
@@ -148,6 +153,12 @@ access(all) fun main(): UInt64 {
     return WatcherRegistry.getCounter()
 }
     `;
+
+    // Ensure FCL is ready
+    if (!fcl || !fcl.query) {
+      console.error('FCL query not available');
+      return 0;
+    }
 
     const result = await fcl.query({
       cadence: script,
@@ -384,6 +395,12 @@ transaction(
     
     // Check if user is authenticated
     console.log('🔐 Checking authentication...');
+    
+    // Ensure FCL is ready
+    if (!fcl || !fcl.currentUser) {
+      throw new Error('FCL is not initialized. Please refresh the page.');
+    }
+    
     const currentUser = await fcl.currentUser.snapshot();
     console.log('👤 Current user:', currentUser);
     
@@ -500,6 +517,10 @@ transaction(
       }
       
       // Save to localStorage for tracking (workaround until contract update)
+      if (!fcl || !fcl.currentUser) {
+        console.warn('FCL not ready, skipping user snapshot');
+        return;
+      }
       const currentUser = await fcl.currentUser.snapshot();
       const ownerAddress = currentUser.addr;
       const localStorageKey = `watchers_${ownerAddress}`;
@@ -703,6 +724,11 @@ transaction {
 }
     `;
 
+    // Ensure FCL is ready
+    if (!fcl || !fcl.mutate) {
+      throw new Error('FCL mutate is not available. Please refresh the page.');
+    }
+    
     const txId = await fcl.mutate({
       cadence: transaction,
       proposer: fcl.authz,
@@ -710,7 +736,10 @@ transaction {
       authorizations: [fcl.authz],
       limit: 9999,
     });
-
+    
+    if (!fcl || !fcl.tx) {
+      throw new Error('FCL tx is not available.');
+    }
     const result = await fcl.tx(txId).onceSealed();
     console.log('✅ Handler initialized:', result);
 

@@ -179,7 +179,20 @@ const Dashboard = ({ user }) => {
               <span className="wallet-address">{user.addr.substring(0, 6)}...{user.addr.substring(user.addr.length - 4)}</span>
             </div>
           ) : (
-            <button className="btn-connect-compact" onClick={fcl.authenticate}>
+            <button 
+              className="btn-connect-compact" 
+              onClick={async () => {
+                try {
+                  if (fcl && fcl.authenticate) {
+                    await fcl.authenticate();
+                  } else {
+                    console.error('FCL not ready');
+                  }
+                } catch (error) {
+                  console.error('Authentication error:', error);
+                }
+              }}
+            >
               Connect Wallet
             </button>
           )}
@@ -236,7 +249,20 @@ const Dashboard = ({ user }) => {
             <div className="empty-icon">🔒</div>
             <h3>Connect Your Wallet</h3>
             <p>Please connect your wallet to view and manage your watchers.</p>
-            <button className="btn-connect-large" onClick={fcl.authenticate}>
+            <button 
+              className="btn-connect-large" 
+              onClick={async () => {
+                try {
+                  if (fcl && fcl.authenticate) {
+                    await fcl.authenticate();
+                  } else {
+                    console.error('FCL not ready');
+                  }
+                } catch (error) {
+                  console.error('Authentication error:', error);
+                }
+              }}
+            >
               Connect Wallet
             </button>
           </div>

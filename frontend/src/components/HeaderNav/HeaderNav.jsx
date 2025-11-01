@@ -107,12 +107,36 @@ const HeaderNav = ({ currentPage, onNavigate, user }) => {
                   {user.addr.substring(0, 6)}...{user.addr.substring(user.addr.length - 4)}
                 </span>
               </div>
-              <button className="btn-logout" onClick={() => fcl.unauthenticate()}>
+              <button 
+                className="btn-logout" 
+                onClick={async () => {
+                  try {
+                    if (fcl && fcl.unauthenticate) {
+                      await fcl.unauthenticate();
+                    }
+                  } catch (error) {
+                    console.error('Logout error:', error);
+                  }
+                }}
+              >
                 Logout
               </button>
             </>
           ) : (
-            <button className="btn-connect" onClick={() => fcl.authenticate()}>
+            <button 
+              className="btn-connect" 
+              onClick={async () => {
+                try {
+                  if (fcl && fcl.authenticate) {
+                    await fcl.authenticate();
+                  } else {
+                    console.error('FCL not ready');
+                  }
+                } catch (error) {
+                  console.error('Authentication error:', error);
+                }
+              }}
+            >
               Connect Wallet
             </button>
           )}

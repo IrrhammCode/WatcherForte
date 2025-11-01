@@ -5,6 +5,9 @@ import { getAuthHeaders } from './findLabsApi.js';
 // Authentication functions
 export const authenticate = async () => {
   try {
+    if (!fcl || !fcl.authenticate) {
+      throw new Error('FCL is not initialized. Please refresh the page.');
+    }
     await fcl.authenticate();
   } catch (error) {
     console.error("Login failed:", error);
@@ -14,6 +17,10 @@ export const authenticate = async () => {
 
 export const unauthenticate = async () => {
   try {
+    if (!fcl || !fcl.unauthenticate) {
+      console.warn('FCL unauthenticate not available');
+      return;
+    }
     await fcl.unauthenticate();
   } catch (error) {
     console.error("Logout failed:", error);
@@ -23,7 +30,11 @@ export const unauthenticate = async () => {
 
 export const getCurrentUser = () => {
   // fcl.currentUser is already a subscription object
-  // Return it directly without wrapping
+  // Return it directly without wrapping, but check if FCL is ready
+  if (!fcl || !fcl.currentUser) {
+    console.warn('FCL currentUser not available');
+    return null;
+  }
   return fcl.currentUser;
 };
 
@@ -135,6 +146,10 @@ export async function deployWatcher(
   executionEffort = "1000"
 ) {
   try {
+    if (!fcl || !fcl.mutate || !fcl.currentUser) {
+      throw new Error('FCL is not initialized. Please refresh the page.');
+    }
+    
     const transactionId = await fcl.mutate({
       cadence: DEPLOY_WATCHER_CADENCE,
       args: (arg, t) => [
@@ -151,6 +166,9 @@ export async function deployWatcher(
     });
 
     // Wait for transaction to be sealed
+    if (!fcl || !fcl.tx) {
+      throw new Error('FCL tx is not available.');
+    }
     const transaction = await fcl.tx(transactionId).onceSealed();
     return transactionId;
   } catch (error) {
@@ -166,6 +184,10 @@ export async function deployWatcher(
  */
 export async function getWatcherData(watcherID) {
   try {
+    if (!fcl || !fcl.query) {
+      throw new Error('FCL query is not available. Please refresh the page.');
+    }
+    
     const result = await fcl.query({
       cadence: `
         import WatcherRegistry from 0xWatcherRegistry
@@ -191,6 +213,10 @@ export async function getWatcherData(watcherID) {
  */
 export async function getAllWatchers(ownerAddress) {
   try {
+    if (!fcl || !fcl.query) {
+      throw new Error('FCL query is not available. Please refresh the page.');
+    }
+    
     const result = await fcl.query({
       cadence: `
         import WatcherRegistry from 0xWatcherRegistry
@@ -219,6 +245,10 @@ export async function getAllWatchers(ownerAddress) {
  */
 export async function checkNFTOwnership(ownerAddress, momentID) {
   try {
+    if (!fcl || !fcl.query) {
+      throw new Error('FCL query is not available. Please refresh the page.');
+    }
+    
     const result = await fcl.query({
       cadence: `
         import "NonFungibleToken"
@@ -298,6 +328,10 @@ export async function checkNFTOwnership(ownerAddress, momentID) {
  */
 export async function checkEventSchema() {
   try {
+    if (!fcl || !fcl.query) {
+      throw new Error('FCL query is not available. Please refresh the page.');
+    }
+    
     const result = await fcl.query({
       cadence: `
         import WatcherRegistry from 0xWatcherRegistry

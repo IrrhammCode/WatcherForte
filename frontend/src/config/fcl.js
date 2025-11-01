@@ -95,3 +95,37 @@ if (typeof window !== 'undefined') {
 // Export network for components to use
 export { NETWORK };
 
+// Helper to ensure FCL is ready before use
+let fclReady = false;
+let fclReadyPromise = null;
+
+export const ensureFCLReady = async () => {
+  if (fclReady) return true;
+  
+  if (!fclReadyPromise) {
+    fclReadyPromise = new Promise((resolve) => {
+      const checkFCL = () => {
+        try {
+          // Import fcl dynamically to ensure it's available
+          import('@onflow/fcl').then((fclModule) => {
+            const fcl = fclModule.default || fclModule;
+            if (fcl && fcl.config && typeof fcl.config === 'function') {
+              fclReady = true;
+              resolve(true);
+            } else {
+              setTimeout(checkFCL, 50);
+            }
+          }).catch(() => {
+            setTimeout(checkFCL, 50);
+          });
+        } catch (error) {
+          setTimeout(checkFCL, 50);
+        }
+      };
+      checkFCL();
+    });
+  }
+  
+  return fclReadyPromise;
+};
+

@@ -8,6 +8,10 @@ const LoginPage = ({ onConnect }) => {
   const handleConnectWallet = async () => {
     setIsConnecting(true);
     try {
+      if (!fcl || !fcl.authenticate) {
+        console.error('FCL not ready');
+        throw new Error('FCL is not initialized. Please refresh the page.');
+      }
       await fcl.authenticate();
       console.log('✅ Wallet connected');
       if (onConnect) {
