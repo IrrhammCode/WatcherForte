@@ -52,9 +52,6 @@ WatcherForte uses the following smart contracts deployed on Flow Testnet:
 - **WatcherRegistry** - [View Contract](https://testnet.flowscan.io/contract/A.0d2b623d26790e50.CustomWatcherHandler)
 - **CustomWatcherHandler** - [View Contract](https://testnet.flowscan.io/contract/A.0d2b623d26790e50.CustomWatcherHandler)
 - **Scheduled Transaction Example:** [View Scheduled Transaction #35632](https://testnet.flowscan.io/transaction/89f47761fcadcef9cc2e3f3861cb4382da47ddb85ead9e987ab0606cb8cdd1ca)
-  - Handler: `A.0d2b623d26790e50.CustomWatcherHandler.Handler`
-  - Successfully executed on November 1, 2025
-  - Parent Transaction: `89f47761fcadcef9cc2e3f3861cb4382da47ddb85ead9e987ab0606cb8cdd1ca`
 
 **Key Contract Features:**
 - ✅ Automated price monitoring via scheduled transactions (Forte)
