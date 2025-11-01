@@ -40,13 +40,8 @@
 .brand-icon {
   width: 40px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(176, 141, 87, 0.15);
+  object-fit: contain;
   border-radius: 8px;
-  font-size: 1.25rem;
-  border: 1px solid rgba(176, 141, 87, 0.25);
   transition: all var(--transition-base);
 }
 

@@ -58,7 +58,7 @@ const LoginPage = ({ onConnect }) => {
         {/* Logo & Branding */}
         <div className="login-header">
           <div className="brand-logo-large">
-            <div className="logo-icon-large">🔍</div>
+            <img src="/logo.png" alt="WatcherForte" className="logo-icon-large" />
           </div>
           <h1 className="brand-title">WatcherForte</h1>
           <p className="brand-tagline">Web3 Autonomous Monitoring & Insights</p>

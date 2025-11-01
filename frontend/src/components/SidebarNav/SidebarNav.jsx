@@ -42,7 +42,7 @@ const SidebarNav = ({ currentPage, onNavigate, user }) => {
       {/* Logo Section */}
       <div className="sidebar-header">
         <div className="sidebar-logo">
-          <div className="logo-icon">⚡</div>
+          <img src="/logo.png" alt="WatcherForte" className="logo-icon" />
           {isExpanded && (
             <div className="logo-text">
               <h2>Watcher<span className="text-gradient-cyan">Forte</span></h2>

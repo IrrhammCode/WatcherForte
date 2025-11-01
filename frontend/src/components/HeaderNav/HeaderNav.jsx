@@ -57,7 +57,7 @@ const HeaderNav = ({ currentPage, onNavigate, user }) => {
       <div className="header-nav-container">
         {/* Logo/Brand Section */}
         <div className="header-brand">
-          <div className="brand-icon">🔍</div>
+          <img src="/logo.png" alt="WatcherForte" className="brand-icon" />
           <div className="brand-text">
             <span className="brand-name">WatcherForte</span>
             <span className="brand-tagline">Flow Analytics</span>

@@ -40,11 +40,9 @@
 }
 
 .logo-icon-large {
-  font-size: 5rem;
-  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   animation: float 3s ease-in-out infinite;
 }
 
