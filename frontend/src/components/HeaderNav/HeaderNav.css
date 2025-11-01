@@ -46,8 +46,8 @@
 }
 
 .header-brand:hover .brand-icon {
-  background: rgba(176, 141, 87, 0.25);
-  border-color: var(--accent-gold);
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 .brand-text {
