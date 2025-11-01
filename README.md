@@ -1,10 +1,15 @@
-# 🎯 WatcherForte - Monitoring Platform
+# 🎯 WatcherForte - Autonomous Price Monitoring Platform
 
-**Automated monitoring with scheduled transactions on Flow blockchain.**
+**Built on Flow blockchain using Forte's Scheduled Transactions (FLIP-330)**
 
-> 🚀 **Built for Forte Hacks 2025** - Winner of multiple Flow hackathon challenges  
-> ⚡ Powered by **Forte** - Flow's native automation upgrade with scheduled transactions  
-> 🔗 **Deployed on Flow Testnet** - Production-ready smart contracts
+> 🚀 **Forte Hacks 2025 Submission** - Autonomous NFT/Token price monitoring with on-chain automation  
+> ⚡ **Powered by Forte** - Flow's network upgrade enabling native scheduled transactions  
+> 🔗 **Deployed on Flow Testnet** - Production-ready smart contracts  
+> 📺 **Video Demo:** [Link will be added]  
+> 🐦 **Social Media:** [X/Twitter post link will be added]
+
+**Network:** Flow Testnet  
+**Submission Type:** Fresh Code (Built from scratch during Forte Hacks 2025)
 
 ---
 
@@ -22,25 +27,30 @@ WatcherForte is a production-ready NFT monitoring platform built on Flow blockch
 
 ## 🌊 Built on Flow with Forte
 
-**WatcherForte is built on Flow blockchain using Forte's scheduled transactions.**
+**✅ This project is built on Flow blockchain.**
 
-Flow is one of the fastest growing developer networks in 2025, and the number 1 choice for builders at hackathons all over the world. Forte is the Flow network upgrade that brings composability and automation natively to Flow. Two new primitives, Actions and Workflows, let developers compose reusable, protocol-agnostic workflows with onchain time-based triggers.
+Flow is one of the fastest growing developer networks in 2025, and the number 1 choice for builders at hackathons all over the world. Flow has a unique multi-role architecture that ensures high transaction speed, near-instant finality, and MEV-resistance, enabling responsive, consumer-scale crypto applications.
 
-### 🏗️ Smart Contracts (Deployed on Flow Testnet)
+**What is Forte?**
 
-WatcherForte uses the following smart contracts deployed on **Flow Testnet**:
+Forte is the Flow network upgrade that brings composability and automation natively to Flow. Two new primitives, Actions and Workflows, let developers compose reusable, protocol-agnostic workflows with onchain time-based triggers. Forte lets builders get an edge with new features, like standardized DeFi actions, **scheduled transactions**, and onchain workflows.
 
-| Contract | Address | Description |
-|----------|---------|-------------|
+**WatcherForte leverages Forte's Scheduled Transactions (FLIP-330)** to enable fully on-chain automation without external cron jobs or services. Every price check is executed as a scheduled transaction on the Flow blockchain.
+
+### 🏗️ Deployed Smart Contracts
+
+**Network:** Flow Testnet
+
+WatcherForte uses the following smart contracts deployed on Flow Testnet:
+
+| Contract Name | Contract Address | Description |
+|---------------|------------------|-------------|
 | **WatcherRegistry** | `0x0d2b623d26790e50` | Core registry for all user-defined watchers, price oracle, and execution logic |
 | **CustomWatcherHandler** | `0x0d2b623d26790e50` | Forte Transaction Scheduler handler for automated watcher execution |
 
-**Contract Deployment Details:**
-- **Network:** Flow Testnet
-- **Deployment Address:** `0x0d2b623d26790e50`
-- **Explorer Links:**
-  - [WatcherRegistry on FlowScan](https://testnet.flowscan.org/account/0x0d2b623d26790e50)
-  - [CustomWatcherHandler on FlowScan](https://testnet.flowscan.org/account/0x0d2b623d26790e50)
+**Explorer Links:**
+- [Account on FlowScan Testnet](https://testnet.flowscan.org/account/0x0d2b623d26790e50)
+- View contracts: `WatcherRegistry` and `CustomWatcherHandler` deployed at `0x0d2b623d26790e50`
 
 **Key Contract Features:**
 - ✅ Automated price monitoring via scheduled transactions (Forte)
@@ -54,7 +64,19 @@ WatcherForte uses the following smart contracts deployed on **Flow Testnet**:
 
 ## 🏆 Forte Hacks 2025 Submission
 
-WatcherForte is participating in **Forte Hacks 2025** (October 1-31st), a global hackathon inviting hackers, creators, and Web3 developers to push the boundaries of smart contract automation, DeFi primitives, and user-centric killer applications to win a share of **$250,000 in bounties and prizes**.
+**About Forte Hacks 2025**
+
+From October 1-31st, this global hackathon invites hackers, creators, and Web3 developers to push the boundaries of smart contract automation, DeFi primitives, and user-centric killer applications to win a share of **$250,000 in bounties and prizes**.
+
+Supported by a range of partners, like Dune, Quicknode, Moonpay, Dapper Labs, Thirdweb, Privy, Crossmint and more, the Forte Hacks hackathon has 5 core tracks - including exclusive bounties for building with partner applications.
+
+**WatcherForte Submission Details:**
+
+- **Submission Type:** Fresh Code (Built from scratch during Forte Hacks 2025)
+- **Network:** Flow Testnet
+- **Video Demo:** [Link to be added]
+- **GitHub Repository:** This repository (public)
+- **Social Media Post:** [X/Twitter link to be added - tagging @flow_blockchain with #ForteHacks]
 
 ### Bounties We're Competing In
 
@@ -252,33 +274,35 @@ Expected: `Result: 1`
 - Manager not found: The scheduler manager is automatically created in the scheduling transactions. If you see this error, ensure you're using the latest transaction files.
 - More docs: see `/.cursor/rules/scheduledtransactions/index.md`, `agent-rules.mdc`, and `flip.md` in this repo.
 
-## 📦 Project Structure
+## 📁 Project Structure
 
-Your project has been set up with the following structure:
+```
+WatcherForte/
+├── cadence/
+│   ├── contracts/
+│   │   ├── WatcherRegistry.cdc          # Deployed: 0x0d2b623d26790e50
+│   │   ├── CustomWatcherHandler.cdc      # Deployed: 0x0d2b623d26790e50
+│   │   └── Counter.cdc                   # Legacy demo (reference)
+│   ├── transactions/
+│   │   └── DeployCustomWatcher.cdc       # Main deployment transaction
+│   └── scripts/
+├── frontend/                              # React + Vite frontend
+│   ├── src/
+│   │   ├── components/                   # UI components
+│   │   ├── services/                     # Blockchain & API services
+│   │   └── config/                       # FCL configuration
+│   └── public/
+├── telegram-notifier/                     # Telegram bot service
+│   ├── api-server.js                     # Express API server
+│   ├── multi-bot-service.js              # Bot logic & monitoring
+│   └── findlabs-api.js                  # Find Labs API integration
+├── flow.json                              # Flow project configuration
+└── README.md                              # This file
+```
 
-- `flow.json` – Project configuration and dependency aliases (string-imports)
-- `/cadence` – Your Cadence code
-
-Inside the `cadence` folder you will find:
-
-- `/contracts` - This folder contains your Cadence contracts (these are deployed to the network and contain the business logic for your application)
-  - `WatcherRegistry.cdc` - **Deployed on Testnet at `0x0d2b623d26790e50`** - Core watcher registry with price oracle and execution logic
-  - `CustomWatcherHandler.cdc` - **Deployed on Testnet at `0x0d2b623d26790e50`** - Forte Transaction Scheduler handler
-  - `Counter.cdc` - Legacy demo contract (for reference only)
-  - `CounterTransactionHandler.cdc` - Legacy demo handler (for reference only)
-
-- `/scripts` - This folder contains your Cadence scripts (read-only operations)
-  - `GetCounter.cdc`
-
-- `/transactions` - This folder contains your Cadence transactions (state-changing operations)
-  - `IncrementCounter.cdc`
-  - `ScheduleIncrementCounter.cdc`
-  - `InitSchedulerManager.cdc`
-  - `InitCounterTransactionHandler.cdc`
-
-- `/tests` - This folder contains your Cadence tests (integration tests for your contracts, scripts, and transactions to verify they behave as expected)
-  - `Counter_test.cdc`
-  - `CounterTransactionHandler_test.cdc`
+**Key Contracts:**
+- **WatcherRegistry.cdc** - Deployed on Flow Testnet at `0x0d2b623d26790e50`
+- **CustomWatcherHandler.cdc** - Deployed on Flow Testnet at `0x0d2b623d26790e50`
 
 
 ## 🔧 Additional CLI Commands
