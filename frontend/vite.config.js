@@ -12,12 +12,20 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'fcl': ['@onflow/fcl'],
+          'fcl': ['@onflow/fcl', '@onflow/types'],
         },
       },
     },
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true,
+    },
   },
   optimizeDeps: {
-    include: ['@onflow/fcl'],
+    include: ['@onflow/fcl', '@onflow/types'],
+    exclude: [],
+  },
+  resolve: {
+    dedupe: ['@onflow/fcl', '@onflow/types'],
   },
 })
