@@ -16,9 +16,21 @@ function App() {
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
-    // Subscribe to FCL user changes
-    const unsubscribe = fcl.currentUser.subscribe(setUser);
-    return () => unsubscribe();
+    // Subscribe to FCL user changes with error handling
+    try {
+      if (fcl && fcl.currentUser && typeof fcl.currentUser.subscribe === 'function') {
+        const unsubscribe = fcl.currentUser.subscribe(setUser);
+        return () => {
+          if (unsubscribe && typeof unsubscribe === 'function') {
+            unsubscribe();
+          }
+        };
+      } else {
+        console.warn('FCL currentUser not available');
+      }
+    } catch (error) {
+      console.error('Error subscribing to FCL user:', error);
+    }
   }, []);
 
   const handleNavigate = (pageId) => {
