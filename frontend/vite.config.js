@@ -15,10 +15,18 @@ export default defineConfig({
           'fcl': ['@onflow/fcl', '@onflow/types'],
         },
       },
+      external: [],
+      preserveEntrySignatures: 'strict',
     },
     commonjsOptions: {
       include: [/node_modules/],
       transformMixedEsModules: true,
+    },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: false,
+      },
     },
   },
   optimizeDeps: {
