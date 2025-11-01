@@ -1,5 +1,4 @@
-# 🎯 WatcherForte - Autonomous Price Monitoring Platform
-
+# 🎯 WatcherForte - Autonomous Price Monitoring/Event/etc Platform
 **Built on Flow blockchain using Forte's Scheduled Transactions (FLIP-330)**
 
 > 🚀 **Forte Hacks 2025 Submission** - Autonomous NFT/Token price monitoring with on-chain automation  
