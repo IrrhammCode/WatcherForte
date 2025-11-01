@@ -49,13 +49,14 @@ WatcherForte uses the following smart contracts deployed on Flow Testnet:
 | **CustomWatcherHandler** | `0x0d2b623d26790e50` | Forte Transaction Scheduler handler for automated watcher execution |
 
 **Explorer Links:**
-- **Account Address:** `0x0d2b623d26790e50` - [View on FlowScan](https://testnet.flowscan.org/account/0x0d2b623d26790e50)
+- **Account Address:** `0x0d2b623d26790e50` - [View Account on FlowScan](https://testnet.flowscan.io/account/0x0d2b623d26790e50)
 - **Contracts Deployed:**
-  - `WatcherRegistry` - Contract name in account `0x0d2b623d26790e50`
-  - `CustomWatcherHandler` - Contract name in account `0x0d2b623d26790e50`
-- **Scheduled Transaction Example:** [View Scheduled Transaction #35632](https://testnet.flowscan.org/transaction/89f47761fcadcef9cc2e3f3861cb4382da47ddb85ead9e987ab0606cb8cdd1ca)
+  - **WatcherRegistry** - [View Contract](https://testnet.flowscan.io/contract/A.0d2b623d26790e50.WatcherRegistry)
+  - **CustomWatcherHandler** - [View Contract](https://testnet.flowscan.io/contract/A.0d2b623d26790e50.CustomWatcherHandler)
+- **Scheduled Transaction Example:** [View Scheduled Transaction #35632](https://testnet.flowscan.io/transaction/89f47761fcadcef9cc2e3f3861cb4382da47ddb85ead9e987ab0606cb8cdd1ca)
   - Handler: `A.0d2b623d26790e50.CustomWatcherHandler.Handler`
   - Successfully executed on November 1, 2025
+  - Parent Transaction: `89f47761fcadcef9cc2e3f3861cb4382da47ddb85ead9e987ab0606cb8cdd1ca`
 
 **Key Contract Features:**
 - ✅ Automated price monitoring via scheduled transactions (Forte)
