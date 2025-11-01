@@ -5,8 +5,8 @@
 > 🚀 **Forte Hacks 2025 Submission** - Autonomous NFT/Token price monitoring with on-chain automation  
 > ⚡ **Powered by Forte** - Flow's network upgrade enabling native scheduled transactions  
 > 🔗 **Deployed on Flow Testnet** - Production-ready smart contracts  
-> 📺 **Video Demo:** [Link will be added]  
-> 🐦 **Social Media:** [X/Twitter post link will be added]
+> 📺 **Video Demo:** [Watch on X/Twitter](https://x.com/BabyBoomWeb3/status/1984466868749681004)  
+> 🐦 **Social Media:** [View Post](https://x.com/BabyBoomWeb3/status/1984466868749681004) - Tags @flow_blockchain #ForteHacks
 
 **Network:** Flow Testnet  
 **Submission Type:** Fresh Code (Built from scratch during Forte Hacks 2025)
@@ -49,8 +49,13 @@ WatcherForte uses the following smart contracts deployed on Flow Testnet:
 | **CustomWatcherHandler** | `0x0d2b623d26790e50` | Forte Transaction Scheduler handler for automated watcher execution |
 
 **Explorer Links:**
-- [Account on FlowScan Testnet](https://testnet.flowscan.org/account/0x0d2b623d26790e50)
-- View contracts: `WatcherRegistry` and `CustomWatcherHandler` deployed at `0x0d2b623d26790e50`
+- **Account Address:** `0x0d2b623d26790e50` - [View on FlowScan](https://testnet.flowscan.org/account/0x0d2b623d26790e50)
+- **Contracts Deployed:**
+  - `WatcherRegistry` - Contract name in account `0x0d2b623d26790e50`
+  - `CustomWatcherHandler` - Contract name in account `0x0d2b623d26790e50`
+- **Scheduled Transaction Example:** [View Scheduled Transaction #35632](https://testnet.flowscan.org/transaction/89f47761fcadcef9cc2e3f3861cb4382da47ddb85ead9e987ab0606cb8cdd1ca)
+  - Handler: `A.0d2b623d26790e50.CustomWatcherHandler.Handler`
+  - Successfully executed on November 1, 2025
 
 **Key Contract Features:**
 - ✅ Automated price monitoring via scheduled transactions (Forte)
@@ -74,9 +79,9 @@ Supported by a range of partners, like Dune, Quicknode, Moonpay, Dapper Labs, Th
 
 - **Submission Type:** Fresh Code (Built from scratch during Forte Hacks 2025)
 - **Network:** Flow Testnet
-- **Video Demo:** [Link to be added]
+- **Video Demo:** [Watch on X/Twitter](https://x.com/BabyBoomWeb3/status/1984466868749681004)
 - **GitHub Repository:** This repository (public)
-- **Social Media Post:** [X/Twitter link to be added - tagging @flow_blockchain with #ForteHacks]
+- **Social Media Post:** [View Post](https://x.com/BabyBoomWeb3/status/1984466868749681004) - Tags @flow_blockchain with #ForteHacks
 
 ### Bounties We're Competing In
 
