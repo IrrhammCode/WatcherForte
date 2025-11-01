@@ -88,6 +88,7 @@ WatcherForte is competing in multiple Forte Hacks challenges:
 - **Focus:** Social/Community Tool + Utility Application
 - **Features:** Track $FROTH price, volume, and community metrics
 - **Data Source:** GeckoTerminal API + Flow Events
+- **Find Labs API:** `/flow/v1/evm/token/{address}` (FROTH metadata: holders, transfers, total supply) + `/tokens/flow-evm/froth/price` (price data)
 
 ### 🏀 aiSports: Best Integration of $JUICE & Fantasy Sports
 - **Prize:** $1,000 USDC Prize Pool
@@ -95,6 +96,7 @@ WatcherForte is competing in multiple Forte Hacks challenges:
 - **Features:** Monitor $JUICE token & aiSports NFT marketplace
 - **Data Source:** Find Labs API
 - **Special Metrics:** Juice price, whale alerts, player stats, vault activity, NFT marketplace
+- **Find Labs API:** `/flow/v1/ft/{tokenId}` (JUICE token data), `/flow/v1/nft/transfer` (NFT marketplace activity), `/flow/v1/nft/{nftType}/item/{id}` (player stats), `/flowscan/v1/vaults` (vault activity), `/flow/v1/account/{address}/ft/{token}` (whale tracking)
 
 ### 🏈 Dapper: Best Dapper Data & Insights Tool
 - **Prize:** $7,000 USDC Prize Pool
@@ -104,12 +106,14 @@ WatcherForte is competing in multiple Forte Hacks challenges:
   - **NFL ALL DAY Insights** - Transaction volume & ownership monitoring
   - **Disney Pinnacle Insights** - Floor price & sales tracking
 - **Data Source:** Flow Blockchain (Find Labs API)
+- **Find Labs API:** `/flow/v1/nft/A.0b2a3299cc857e29.TopShot` (NBA collection), `/flow/v1/nft/A.e4cf4bdc1751c65d.AllDay` (NFL collection), `/flow/v1/nft/{collectionId}/holding` (ownership data with pagination), `/flow/v1/nft/transfer` (sales tracking)
 
 ### ⚽ MFL: Best On-chain Football
 - **Prize:** $1,000 USDC Prize
 - **Focus:** Market & Economy Tools + Automation
 - **Features:** Track MFL player NFTs, transfers, marketplace activity & competition results
 - **Data Source:** MFL Contracts + Find Labs
+- **Find Labs API:** `/flow/v1/nft/{mflCollectionId}/item/{playerId}` (player NFT data), `/flow/v1/nft/transfer` (transfers & marketplace activity)
 
 ### 🎨 Vibe Coded Project
 - **Prize:** Daily prizes for best Building in Public posts
