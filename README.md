@@ -2,11 +2,11 @@
 **Built on Flow blockchain using Forte's Scheduled Transactions (FLIP-330)**
 
 > 🚀 **Forte Hacks 2025 Submission** - Autonomous NFT/Token price monitoring with on-chain automation
->                  🐦 Using Find Labs API
 > ⚡ **Powered by Forte** - Flow's network upgrade enabling native scheduled transactions  
 > 🔗 **Deployed on Flow Testnet** - Production-ready smart contracts  
 > 📺 **Video Demo:** [Watch on X/Twitter](https://x.com/BabyBoomWeb3/status/1984466868749681004)  
 > 🐦 **Social Media:** [View Post](https://x.com/BabyBoomWeb3/status/1984466868749681004) - Tags @flow_blockchain #ForteHacks
+> 🐦 Using Find Labs API
 
 **Network:** Flow Testnet  
 **Submission Type:** Fresh Code (Built from scratch during Forte Hacks 2025)
