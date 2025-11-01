@@ -77,6 +77,7 @@ Supported by a range of partners, like Dune, Quicknode, Moonpay, Dapper Labs, Th
 **WatcherForte Submission Details:**
 
 - **Submission Type:** Fresh Code (Built from scratch during Forte Hacks 2025)
+- **Vibe Coded:** ✅ Yes - This project was vibe coded during Forte Hacks 2025, utilizing Flow AI tools and resources throughout the development process
 - **Network:** Flow Testnet
 - **Video Demo:** [Watch on X/Twitter](https://x.com/BabyBoomWeb3/status/1984466868749681004)
 - **GitHub Repository:** This repository (public)
@@ -115,7 +116,9 @@ WatcherForte is competing in multiple Forte Hacks challenges:
 - **Data Source:** MFL Contracts + Find Labs
 
 ### 🎨 Vibe Coded Project
-- **Our Submission:** WatcherForte was vibe coded during Forte Hacks 2025, utilizing Flow AI tools and resources throughout the development process
+- **Prize:** Daily prizes for best Building in Public posts
+- **Our Submission:** ✅ WatcherForte was vibe coded during Forte Hacks 2025, utilizing Flow AI tools and resources throughout the development process
+- **Building in Public:** Daily posts with `#ForteHacks` and `@flow_blockchain` throughout October 2025
 
 ---
 
